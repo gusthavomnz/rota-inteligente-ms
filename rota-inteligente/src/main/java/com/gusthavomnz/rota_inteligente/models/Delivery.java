@@ -1,4 +1,4 @@
-package models;
+package com.gusthavomnz.rota_inteligente.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
