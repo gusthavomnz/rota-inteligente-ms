@@ -1,0 +1,10 @@
+package com.gusthavomnz.rota_inteligente.apis.dto;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record RouteDTO(
+        Double distance,
+        Double duration
+) {}
+// ^ campos da lista routes[]
