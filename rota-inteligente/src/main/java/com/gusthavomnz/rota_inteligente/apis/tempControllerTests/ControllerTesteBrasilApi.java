@@ -1,7 +1,7 @@
-package com.gusthavomnz.rota_inteligente.cepAPI;
+package com.gusthavomnz.rota_inteligente.apis.tempControllerTests;
 
-import com.gusthavomnz.rota_inteligente.cepAPI.dto.AddressResponseDTO;
-import com.gusthavomnz.rota_inteligente.cepAPI.port.CepPort;
+import com.gusthavomnz.rota_inteligente.apis.dto.AddressResponseDTO;
+import com.gusthavomnz.rota_inteligente.apis.port.CepPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/testBrasil")
+public class ControllerTesteBrasilApi {
 
     private final CepPort cepPort;
 
-    public TestController(CepPort cepPort) {
+    public ControllerTesteBrasilApi(CepPort cepPort) {
         this.cepPort = cepPort;
     }
 
