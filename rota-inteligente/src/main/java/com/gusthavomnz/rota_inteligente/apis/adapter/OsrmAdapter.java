@@ -13,19 +13,24 @@ public class OsrmAdapter implements OsrmPort {
         this.osrmClient = osrmClient;
     }
 
-@Override
-    public Double getRoute(String lat1, String lon1, String lat2, String lon2) {
+    @Override
+    public String formatCoords(String lat1, String lon1, String lat2, String lon2) {
         // Regra: lon,lat;lon,lat
         String coords = String.format("%s,%s;%s,%s", lon1, lat1, lon2, lat2);
+        return coords;
+    }
 
-        // O Feign chama a API usando essa String no Path
-        OsrmResponseDTO response = osrmClient.getRoute(coords);
+    @Override
+    public Double sendRequestRouteOsrm(String coords) {
+        try {
+            OsrmResponseDTO response = osrmClient.getRoute(coords);
+            if (response != null && response.routes() != null && !response.routes().isEmpty()) {
+                // Pega a distância em metros e converte para KM
+                return response.routes().get(0).distance() / 1000.0;
+            }
+        } catch (Exception e) {
 
-        if (response != null && response.routes() != null && !response.routes().isEmpty()) {
-            // Pega a distância em metros e converte para KM
-            return response.routes().get(0).distance() / 1000.0;
-        }
-
+    }
         return 0.0;
     }
 }

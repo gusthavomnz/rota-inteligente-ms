@@ -40,12 +40,12 @@ public class ControllerTesteRoteamento {
                 "Brazil"
         );
         response.add(destino);
+        String coords = osrmPort.formatCoords(   "-10.9472", "-37.0731",
+                destino.latitude(), destino.longitude());
 
         // 3. OSRM - peguei lat/long de aracaju por padrão para apenas testarmos a distancia de cidade inserida via post e aracaju
-        Double distanciaKm = osrmPort.getRoute(
-                "-10.9472", "-37.0731",
-                destino.latitude(), destino.longitude()
-        );
+        Double distanciaKm = osrmPort.sendRequestRouteOsrm(coords);
+
         response.add(String.format("Distância Total: %.2f km", distanciaKm));
 
         return ResponseEntity.ok(response);

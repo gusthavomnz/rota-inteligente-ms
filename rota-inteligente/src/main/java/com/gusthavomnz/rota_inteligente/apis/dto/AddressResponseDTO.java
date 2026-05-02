@@ -1,5 +1,6 @@
 package com.gusthavomnz.rota_inteligente.apis.dto;
 
+
 public record AddressResponseDTO(
         String cep,
         String state,
