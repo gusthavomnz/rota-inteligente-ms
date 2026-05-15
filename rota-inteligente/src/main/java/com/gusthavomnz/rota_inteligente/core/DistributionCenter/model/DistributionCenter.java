@@ -18,10 +18,10 @@ public class DistributionCenter {
     private String name;
 
     @Column(name = "latitude", nullable = false, precision = 10, scale = 8)
-    private BigDecimal latitude;
+    private String latitude;
 
     @Column(name = "longitude", nullable = false, precision = 11, scale = 8)
-    private BigDecimal longitude;
+    private String longitude;
 
     @Column(name = "km_value", nullable = false, precision = 10, scale = 2)
     private BigDecimal kmValue;

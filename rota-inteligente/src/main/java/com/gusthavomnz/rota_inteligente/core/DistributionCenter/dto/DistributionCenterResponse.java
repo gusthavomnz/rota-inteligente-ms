@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 public record DistributionCenterResponse(
         Long id,
         String name,
-        BigDecimal latitude,
-        BigDecimal longitude,
+        String latitude,
+        String longitude,
         BigDecimal kmValue,
         BigDecimal dispatchFee
 ) {}
