@@ -1,9 +1,9 @@
 package com.gusthavomnz.rota_inteligente.apis.tempControllerTests;
 
-import com.gusthavomnz.rota_inteligente.apis.dto.AddressResponseDTO;
-import com.gusthavomnz.rota_inteligente.apis.dto.CoordinatesResponseDTO;
-import com.gusthavomnz.rota_inteligente.apis.port.CepPort;
-import com.gusthavomnz.rota_inteligente.apis.port.OpenStreetPort;
+import com.gusthavomnz.rota_inteligente.integration.cepAPI.dto.AddressResponseDTO;
+import com.gusthavomnz.rota_inteligente.integration.nominatumAPI.dto.CoordinatesResponseDTO;
+import com.gusthavomnz.rota_inteligente.integration.cepAPI.port.CepPort;
+import com.gusthavomnz.rota_inteligente.integration.nominatumAPI.port.OpenStreetPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

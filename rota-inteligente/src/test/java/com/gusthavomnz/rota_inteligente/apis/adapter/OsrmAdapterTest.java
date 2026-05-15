@@ -1,7 +1,9 @@
 package com.gusthavomnz.rota_inteligente.apis.adapter;
 
-import com.gusthavomnz.rota_inteligente.apis.dto.OsrmResponseDTO;
-import com.gusthavomnz.rota_inteligente.apis.dto.RouteDTO;
+import com.gusthavomnz.rota_inteligente.integration.osrmAPI.adapter.OsrmAdapter;
+import com.gusthavomnz.rota_inteligente.integration.osrmAPI.adapter.OsrmClient;
+import com.gusthavomnz.rota_inteligente.integration.osrmAPI.dto.OsrmResponseDTO;
+import com.gusthavomnz.rota_inteligente.integration.osrmAPI.dto.RouteDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
