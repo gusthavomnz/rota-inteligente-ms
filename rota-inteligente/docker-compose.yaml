@@ -1,0 +1,43 @@
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-CU28-ubuntu-20.04
+    container_name: mssql-db
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${SUA_SENHA}
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - rota-network
+
+    command: >
+      /bin/bash -c "
+      /opt/mssql/bin/sqlservr &
+      sleep 15 &&
+      /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${SUA_SENHA} -C -Q \"IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${NOME_DO_BANCO}') CREATE DATABASE [${NOME_DO_BANCO}];\" &&
+      wait"
+
+  api:
+    build: .
+    container_name: java-api
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sql-server:1433;databaseName=${NOME_DO_BANCO};encrypt=true;trustServerCertificate=true
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=${SUA_SENHA}
+    depends_on:
+      - sql-server
+    networks:
+      - rota-network
+
+volumes:
+  sql_data:
+
+networks:
+  rota-network:
+    driver: bridge

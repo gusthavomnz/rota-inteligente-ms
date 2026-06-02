@@ -12,19 +12,12 @@ public record CreateDistributionCenterRequest(
         @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres")
         String name,
 
-        @NotNull(message = "A latitude é obrigatória")
-        @Digits(integer = 2, fraction = 8)
-        BigDecimal latitude,
-
-        @NotNull(message = "A longitude é obrigatória")
-        @Digits(integer = 3, fraction = 8)
-        BigDecimal longitude,
+        @NotBlank(message = "O cep é obrigatório")
+        String cep,
 
         @NotNull(message = "O valor por KM é obrigatório")
-        @DecimalMin(value = "0.0", inclusive = false)
         BigDecimal kmValue,
 
         @NotNull(message = "A taxa de despacho é obrigatória")
-        @DecimalMin(value = "0.0")
         BigDecimal dispatchFee
 ) {}
